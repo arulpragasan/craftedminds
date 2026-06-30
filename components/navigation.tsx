@@ -4,59 +4,80 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 export function Navigation() {
-  const navItems = [
-    { label: 'CRAFTED', href: '/' },
-    { label: 'Film', href: '#film' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
-  ]
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-6">
+    <nav className="fixed inset-x-0 top-0 z-50">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.8 }}
-        className="flex items-center justify-between"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
+        className="mx-auto flex h-20 max-w-7xl items-center justify-between px-8 lg:px-12"
       >
-        {/* Logo */}
-        <Link href="/" className="text-xl font-semibold tracking-wider text-white hover:text-accent transition-colors">
-          {navItems[0].label}
+        {/* Brand */}
+        <Link
+          href="/"
+          className="group font-heading text-2xl tracking-tight"
+        >
+          <span className="text-brand transition-colors duration-300">
+            crafted
+          </span>
+
+          <span className="text-gold transition-colors duration-300">
+            minds
+          </span>
         </Link>
 
-        {/* Nav Items */}
-        <div className="hidden md:flex items-center gap-12">
-          {navItems.slice(1).map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-light tracking-wide text-gray-400 hover:text-white transition-colors duration-300"
-            >
-              {item.label}
-            </Link>
-          ))}
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-10 md:flex">
+          <NavLink href="#experience">Experience</NavLink>
+          <NavLink href="#about">About</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
         </div>
 
-        {/* Mobile Menu Placeholder */}
+        {/* Mobile */}
         <button
-          className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
-          aria-label="Menu"
+          className="md:hidden text-brand"
+          aria-label="Open menu"
         >
           <svg
-            className="w-6 h-6"
+            className="h-5 w-5"
             fill="none"
             stroke="currentColor"
+            strokeWidth="1.5"
             viewBox="0 0 24 24"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
+              d="M4 7h16M4 12h16M4 17h16"
             />
           </svg>
         </button>
       </motion.div>
     </nav>
+  )
+}
+
+function NavLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
+  return (
+    <Link
+      href={href}
+      className="
+        text-sm
+        tracking-[0.18em]
+        uppercase
+        text-white/55
+        transition-all
+        duration-300
+        hover:text-white
+      "
+    >
+      {children}
+    </Link>
   )
 }

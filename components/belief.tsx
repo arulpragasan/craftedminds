@@ -13,16 +13,11 @@ export function Belief() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // Trigger progressive reveal when section comes into view
-            const startTime = Date.now()
-            const revealInterval = setInterval(() => {
-              const elapsed = Date.now() - startTime
-              const lineIndex = Math.floor(elapsed / 800) // 800ms per line
-              if (lineIndex <= 4) {
-                setRevealedLines(lineIndex + 1)
-              } else {
-                clearInterval(revealInterval)
-              }
-            }, 100)
+            lines.forEach((_, index) => {
+              setTimeout(() => {
+                setRevealedLines(index + 1)
+              }, index * 800)
+            })
             observer.unobserve(entry.target)
           }
         })
@@ -48,36 +43,38 @@ export function Belief() {
   ]
 
   const lineVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0,
+      y: 12,
+    },
     visible: {
       opacity: 1,
       transition: {
-        duration: 1.2,
+        duration: 0.9,
         ease: 'easeInOut',
       },
     },
   }
 
   return (
-    <section
+    <section id="belief"
       ref={containerRef}
-      className="relative flex min-h-screen w-full items-center justify-center bg-background px-6 py-24"
+      className="relative flex min-h-screen w-full items-center justify-center bg-background px-8 lg:px-12 py-24"
     >
       {/* Subtle background gradient transition */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95" />
       </div>
 
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center">
+      <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
         {/* Main text content */}
-        <div className="space-y-6 font-serif text-5xl leading-tight text-foreground md:text-6xl lg:text-7xl">
+        <div className="space-y-8 font-serif text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl">
           {lines.map((line, index) => (
             <motion.div
               key={index}
               variants={lineVariants}
               initial="hidden"
               animate={revealedLines > index ? 'visible' : 'hidden'}
-              className={index === 0 ? 'text-accent font-semibold' : ''}
+              className={index === 0 ? 'text-gold font-medium' : ''}
             >
               {line}
             </motion.div>
@@ -89,8 +86,8 @@ export function Belief() {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: 'easeInOut' }}
-            className="mt-12 h-px w-12 bg-accent"
+            transition={{ duration: 0.9, delay: 0.4, ease: 'easeInOut' }}
+            className="mt-12 h-px w-16 bg-accent"
           />
         )}
       </div>

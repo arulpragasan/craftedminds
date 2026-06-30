@@ -29,11 +29,11 @@ export function Experience() {
   }, [hasAnimated])
 
   return (
-    <section
+    <section id="experience"
       ref={containerRef}
       className="relative min-h-screen w-full bg-background flex items-center justify-center overflow-hidden"
     >
-      <div className="relative w-full max-w-5xl px-6 py-24">
+      <div className="relative w-full max-w-6xl px-6 py-24">
         {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -41,10 +41,42 @@ export function Experience() {
           transition={{ duration: 1.2, ease: 'easeOut' }}
           className="mb-16 text-center"
         >
-          <h2 className="font-serif text-6xl sm:text-7xl lg:text-8xl font-semibold text-foreground tracking-tight">
-            Experience<br />
+          <h2
+            className="
+              font-heading
+              text-5xl
+              md:text-6xl
+              lg:text-7xl
+              font-medium
+              tracking-tight
+            "
+          >
+            Experience
+            <br />
             Crafted
           </h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{
+              duration: 1,
+              delay: 0.35,
+              ease: 'easeOut',
+            }}
+            className="
+              mx-auto
+              mt-8
+              max-w-2xl
+              text-lg
+              leading-relaxed
+              text-white/65
+              md:text-xl
+            "
+          >
+            See how luxury brands transform products into curated digital
+            experiences.
+          </motion.p>
         </motion.div>
 
         {/* Browser Frame Container */}
@@ -55,18 +87,7 @@ export function Experience() {
           className="relative"
         >
           {/* Browser Chrome */}
-          <div className="relative rounded-lg overflow-hidden bg-card border border-border shadow-2xl">
-            {/* Browser Header */}
-            <div className="bg-card border-b border-border px-4 py-3 flex items-center gap-2">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500 opacity-60" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-60" />
-                <div className="w-3 h-3 rounded-full bg-green-500 opacity-60" />
-              </div>
-              <div className="flex-1 ml-4 text-xs text-muted-foreground">
-                crafted.minds/experience
-              </div>
-            </div>
+          <div className="relative rounded-none overflow-hidden bg-card border border-white/10">
 
             {/* Content Area */}
             <div className="relative w-full aspect-video bg-background overflow-hidden">
@@ -87,7 +108,7 @@ export function Experience() {
               </motion.div>
 
               {/* Overlay Gradient for Depth */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background opacity-30" />
+              <div className="absolute inset-0 from-transparent via-transparent to-background opacity-30" />
 
               {/* Play Button */}
               <motion.button
@@ -103,7 +124,7 @@ export function Experience() {
                   console.log('[v0] Play button clicked - video would start here')
                 }}
                 className="absolute inset-0 flex items-center justify-center cursor-pointer group"
-                aria-label="Play 60-second film"
+                aria-label="Experience Crafted →"
               >
                 {/* Circular Background */}
                 <div className="relative">
@@ -111,16 +132,20 @@ export function Experience() {
                   <motion.div
                     animate={hasAnimated ? { rotate: 360 } : { rotate: 0 }}
                     transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-0 w-20 h-20 rounded-full border border-accent opacity-30"
+                    className="absolute inset-0 w-24 h-24 rounded-full border border-accent opacity-30"
                   />
 
-                  {/* Middle Ring */}
-                  <div className="absolute inset-0 w-20 h-20 rounded-full border border-accent opacity-20 scale-125" />
-
                   {/* Play Icon Circle */}
-                  <div className="relative w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover:bg-white/15 transition-all duration-300">
+                  <div className="relative w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover:bg-white/15 transition-all duration-300">
                     {/* Triangle Play Icon */}
-                    <div className="w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-12 border-t-white ml-1" />
+                    <svg
+                      className="h-7 w-7 text-white"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
                   </div>
                 </div>
               </motion.button>
@@ -144,7 +169,7 @@ export function Experience() {
           className="mt-12 text-center"
         >
           <p className="text-sm text-muted-foreground tracking-wide uppercase">
-            Watch the 60-second film
+            A 60-second introduction.
           </p>
         </motion.div>
       </div>

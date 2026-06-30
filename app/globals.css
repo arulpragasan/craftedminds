@@ -50,38 +50,73 @@
 
 :root {
   color-scheme: dark;
-  --background: #0A0A0A;
-  --foreground: #FFFFFF;
-  --card: #1A1A1A;
-  --card-foreground: #FFFFFF;
-  --popover: #1A1A1A;
-  --popover-foreground: #FFFFFF;
-  --primary: #000000;
-  --primary-foreground: #FFFFFF;
-  --secondary: #1A1A1A;
-  --secondary-foreground: #FFFFFF;
-  --muted: #404040;
-  --muted-foreground: #A0A0A0;
-  --accent: #8A7356;
-  --accent-foreground: #FFFFFF;
-  --destructive: #EF4444;
-  --border: #2A2A2A;
-  --input: #1A1A1A;
-  --ring: #8A7356;
-  --chart-1: #8A7356;
-  --chart-2: #A89968;
-  --chart-3: #6B5D4F;
-  --chart-4: #4A3F35;
-  --chart-5: #2D241B;
-  --radius: 0.375rem;
-  --sidebar: #1A1A1A;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #000000;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #8A7356;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #2A2A2A;
-  --sidebar-ring: #8A7356;
+
+  /* ===========================
+     Crafted Brand Colors
+     =========================== */
+
+  --brand-black: #0a0a0a;
+  --brand-surface: #141414;
+  --brand-surface-light: #1b1b1b;
+
+  --brand-ivory: #f5f3ee;
+  --brand-gold: #b08b5e;
+  --brand-gold-light: #caa77b;
+
+  --brand-muted: #a6a29c;
+  --brand-border: #27221d;
+
+  /* ===========================
+     Shadcn Mapping
+     =========================== */
+
+  --background: var(--brand-black);
+  --foreground: var(--brand-ivory);
+
+  --card: var(--brand-surface);
+  --card-foreground: var(--brand-ivory);
+
+  --popover: var(--brand-surface);
+  --popover-foreground: var(--brand-ivory);
+
+  --primary: var(--brand-ivory);
+  --primary-foreground: var(--brand-black);
+
+  --secondary: var(--brand-surface-light);
+  --secondary-foreground: var(--brand-ivory);
+
+  --muted: var(--brand-surface-light);
+  --muted-foreground: var(--brand-muted);
+
+  --accent: var(--brand-gold);
+  --accent-foreground: var(--brand-black);
+
+  --border: var(--brand-border);
+  --input: var(--brand-surface-light);
+  --ring: var(--brand-gold);
+
+  --destructive: #ef4444;
+
+  --radius: 0.4rem;
+
+  /* Charts (not used yet) */
+
+  --chart-1: #b08b5e;
+  --chart-2: #caa77b;
+  --chart-3: #8f7352;
+  --chart-4: #5b4a37;
+  --chart-5: #32281f;
+
+  /* Sidebar */
+
+  --sidebar: var(--brand-surface);
+  --sidebar-foreground: var(--brand-ivory);
+  --sidebar-primary: var(--brand-black);
+  --sidebar-primary-foreground: var(--brand-ivory);
+  --sidebar-accent: var(--brand-gold);
+  --sidebar-accent-foreground: var(--brand-black);
+  --sidebar-border: var(--brand-border);
+  --sidebar-ring: var(--brand-gold);
 }
 
 .dark {
@@ -166,4 +201,36 @@
   html {
     @apply font-sans;
   }
+}
+
+@layer utilities {
+
+  .text-brand {
+    color: var(--brand-ivory);
+  }
+
+  .text-gold {
+    color: var(--brand-gold);
+  }
+
+  .bg-brand {
+    background: var(--brand-black);
+  }
+
+  .bg-surface {
+    background: var(--brand-surface);
+  }
+
+  .border-brand {
+    border-color: var(--brand-border);
+  }
+
+}
+
+.text-brand {
+  color: var(--brand-ivory);
+}
+
+.text-gold {
+  color: rgb(176 139 94 / 92%);
 }

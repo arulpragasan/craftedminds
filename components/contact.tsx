@@ -55,31 +55,31 @@ export function Contact() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 1,
+        duration: 0.9,
         ease: 'easeOut',
       },
     },
   }
 
   return (
-    <section
+    <section id="contact"
       ref={containerRef}
       className="relative min-h-screen w-full bg-background flex items-center justify-center px-6 py-32"
     >
       <motion.div
-        className="max-w-2xl w-full flex flex-col items-center text-center"
+        className="max-w-3xl w-full flex flex-col items-center text-center"
         variants={containerVariants}
         initial="hidden"
         animate={revealedElements > 0 ? 'visible' : 'hidden'}
       >
         {/* First statement */}
         <motion.div
-          className="mb-12"
+          className="mb-20"
           variants={elementVariants}
           initial="hidden"
           animate={revealedElements > 0 ? 'visible' : 'hidden'}
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal text-foreground leading-tight text-balance">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-normal text-foreground leading-tight text-balance">
             Every exceptional brand
             <br />
             tells a story.
@@ -88,29 +88,29 @@ export function Contact() {
 
         {/* Second statement */}
         <motion.div
-          className="mb-16"
+          className="mb-20"
           variants={elementVariants}
           initial="hidden"
           animate={revealedElements > 1 ? 'visible' : 'hidden'}
         >
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-foreground leading-tight text-balance">
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-normal text-foreground leading-tight text-balance">
             Let&apos;s craft
             <br />
             how the world experiences{' '}
-            <span className="text-accent">yours.</span>
+            <span className="text-gold">yours.</span>
           </h3>
         </motion.div>
 
         {/* CTA Button and secondary text */}
         <motion.div
-          className="flex flex-col items-center gap-8"
+          className="flex flex-col items-center gap-10"
           variants={elementVariants}
           initial="hidden"
           animate={revealedElements > 2 ? 'visible' : 'hidden'}
         >
           <Button
             size="lg"
-            className="bg-foreground text-background hover:bg-accent hover:text-foreground px-8 py-3 text-base font-normal transition-colors duration-300"
+            className="bg-foreground text-background hover:bg-neutral-100 hover:text-foreground px-10 py-3 text-sm font-normal transition-colors duration-300"
             onClick={() => {
               // Scroll to contact form or open contact modal
               console.log('[v0] Request demonstration clicked')
@@ -120,7 +120,7 @@ export function Contact() {
           </Button>
 
           <p className="text-sm sm:text-base text-muted-foreground max-w-md mx-auto">
-            For luxury brands seeking exceptional digital experiences.
+            Created for luxury brands seeking exceptional digital experiences.
           </p>
         </motion.div>
       </motion.div>
